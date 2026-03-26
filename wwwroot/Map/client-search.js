@@ -525,7 +525,7 @@ async function addLocation() {
     const query = add_address.replace(/\s+/g, "+");
 
     try {
-        const geoResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=AIzaSyBYVdWjc4-0m102zHkgWLe_SPfGHdso7rI`);
+        const geoResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=***`);
 
         // Return error if response fails
         if (!geoResponse.ok) {
