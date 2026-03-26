@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 65px;
+    --sidebar-width: 130px;
+
+    --primary-color: rgb(37, 54, 105);
+    --secondary-color: #414040;
+    --primary-accent: #9ec3ff;
+    --secondary-accent: #f0dd73;
+    --sidebar-hover: #7197d5;
+    --text-clr: black;
+
+    --transition-fast: 0.15s ease-in-out;
+    --transition-smooth: 0.3s ease-in-out;
+}
+
+html, body {
+    height: auto;
+    min-height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #fafafa;
+}
+
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    padding:  20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    z-index: 5;
+}
+
+.header-left img {
+    height: 40px;
+    width: auto;
+}
+
+.header-center {
+    position: relative;
+    height: 35px;
+    width: 460px;
+    margin-left: 25px;
+}
+
+.header-center input[type=search] {
+    position: absolute;
+    left: 23%;
+    height: 100%;
+    width: 80%;
+    padding-left: 30px;
+    border-radius: 0px 20px 20px 0px;
+    border: none;
+}
+
+.header-center input[type=search]:focus {
+    outline: 0.5px solid #e0e0e0;
+}
+
+.header-center select {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 23%;
+    padding-left: 7px;
+    border-radius: 20px 0px 0px 20px;
+    border: none;
+    background-color: #e0e0e0;
+}
+
+.header-center select:focus {
+    outline: 0.5px solid #e0e0e0;
+}
+
+.header-center #search-btn {
+    position: absolute;
+    left: 24%;
+    border-radius: 50%;
+    transform: translateY(50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header-center #search-btn img {
+    height: 15px;
+    width: 15px
+}
+
+.header-right a:hover {
+    text-decoration: none;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: auto;
+
+    color: white;
+    font-size: small;
+    letter-spacing: 0.5px;
+}
+
+.header-right #profile-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+
+    height: 35px;
+    width: 35px;
+}
+
+#profile-picture img {
+    height: 85%;
+    width: 85%;
+    object-fit: contain;
+}
+
+.modal-topbar {
+    position: fixed;
+    z-index: 1;
+    left: calc(100vw - 160px);
+    top: calc(var(--header-height) - 10px);
+    width: 150px;
+    height: auto;
+    overflow: auto;
+
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px 0.5px rgba(0,0,0,0.4);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 170ms ease;
+}
+
+.modal-topbar.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-topbar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.modal-content-topbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    overflow: hidden;
+    
+    transition: 
+        background-color var(--transition-smooth), 
+        color var(--transition-smooth);
+}
+
+.modal-content-topbar a:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.modal-content-topbar a span {
+    color: var(--primary-accent);
+}
+
+.modal-content-topbar a:hover span {
+  color: black;
+}
+
+#signout-btn {
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+
+    transition: background-color var(--transition-smooth);
+}
+
+#signout-btn:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.content-wrapper {
+    margin-top: var(--header-height);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: calc(100vh - var(--header-height));
+}
+
+#sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-color);
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+        
+    position: sticky;
+    top: var(--header-height);
+    align-self: start;
+    z-index: 4;
+
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+}
+
+#sidebar-nav.close {
+    width: calc(var(--sidebar-width) / 2);
+}
+
+#sidebar-nav.close span {
+    opacity: 0;
+}
+
+
+#sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1em 10px;
+}
+
+#sidebar-nav ul li {
+    list-style: none;
+    width: 95%;
+    line-height: 50px;
+}
+
+#sidebar-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4em;
+    padding: 0.5em 0.4em;
+    border-radius: 0.4em;
+    text-decoration: none;
+    color: white;
+
+    transition: 
+        color var(--transition-smooth), 
+        background-color var(--transition-smooth),
+        border-left var(--transition-fast);
+}
+
+#sidebar-nav svg {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    fill: currentColor; 
+}
+
+#sidebar-nav span {
+  opacity: 1;
+  transition: opacity var(--transition-fast);
+}
+
+#sidebar-nav li.active a {
+    color: var(--secondary-accent);
+    font-weight: bold;
+}
+
+
+#sidebar-nav li:last-child {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    line-height: 25px;
+
+    transition: all 0.3s ease;
+}
+
+#sidebar-nav.close li:last-child  {
+    transform: translateY(2px);
+    flex-direction: column;
+}
+
+#sidebar-nav li:last-child svg {
+    fill: white;
+}
+
+.rotate svg:last-child {
+    rotate: 180deg;
+}
+
+#sidebar-nav a:hover{
+    color: var(--text-clr);
+    background-color: var(--sidebar-hover);
+    border-left: var(--primary-accent) solid 2px;
+}
+
+#release-notes {
+    cursor: pointer;
+    font-size: x-small;
+}
+
+#main-content {
+    padding: min(0.5em, 15%);
+    height: auto;
+    min-height: 100%;
+    display: flex;
+}
+
+#toggle-btn {
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+}
+
+#toggle-btn svg {
+    transition: rotate 350ms ease;
+}
+
+#sidebar-nav.reload,
+#sidebar-nav.reload * {
+    transition: none !important;
+}

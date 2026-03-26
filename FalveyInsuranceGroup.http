@@ -1,0 +1,194 @@
+@rootURL = http://localhost:5113
+
+GET {{rootURL}}/weatherforecast/
+Accept: application/json
+
+###
+####CUSTOMERS#######################
+GET {{rootURL}}/api/customers
+Accept: application/json
+
+###
+GET {{rootURL}}/api/customers/2
+Accept: application/json
+
+###
+POST {{rootURL}}/api/customers
+Content-Type: application/json
+{
+  "name": "Emily Smith",
+  "email": "esmith_1234@email.ric.edu",
+  "phone": "4015558965",
+  "addr_line1": "4 Mulberry Ln",
+  "addr_line2": "",
+  "city": "Woonsocket",
+  "state_code": "RI",
+  "zip_code": "02895",
+  "created_at": "2025-09-25T00:00:00"
+}
+
+###
+PUT {{rootURL}}/api/customers/6
+Content-Type: application/json
+{
+  "customer_id": 6,
+  "name": "Mary Smith",
+  "email": "msmith_1234@email.ric.edu",
+  "phone": "4015559468",
+  "addr_line1": "2 Mulberry Ln",
+  "addr_line2": "",
+  "city": "Woonsocket",
+  "state_code": "RI",
+  "zip_code": "02895",
+  "created_at": "2025-09-23T00:00:00"
+}
+
+###
+PATCH {{rootURL}}/api/customers/1
+Content-Type: application/json-patch+json
+Accept: application/json
+[
+  {
+    "op": "replace",
+    "path": "/addr_line1",
+    "value": "1 Brick Rd"
+  },
+  {
+    "op": "replace",
+    "path": "/addr_line2",
+    "value": "Bldg. 3"
+  },
+  {
+    "op": "replace",
+    "path": "/zip_code",
+    "value": "02860"
+  }
+]
+
+###
+DELETE {{rootURL}}/api/customers/6
+
+###
+###EMPLOYEES########################
+GET {{rootURL}}/api/employees/
+Accept: application/json
+
+###
+GET {{rootURL}}/api/employees/1
+Accept: application/json
+
+###
+POST {{rootURL}}/api/employees
+Content-Type: application/json
+  {
+    "employee_id": 3,
+    "name": "Martin Doe",
+    "title": "Agent",
+    "email": "martin.doe@emailplace.com",
+    "phone": "4015557807",
+    "status": "Active",
+    "created_at": "2025-09-24T14:49:34"
+  }
+
+###
+PUT {{rootURL}}/api/employees/4
+Content-Type: application/json
+  {
+    "employee_id": 4,
+    "name": "Eric Doe",
+    "title": "Agent",
+    "email": "eric.doe@emailplace.com",
+    "phone": "4015557891",
+    "status": "Active",
+    "created_at": "2025-09-24T14:49:34"
+  }
+
+###
+PATCH {{rootURL}}/api/employees/4
+Content-Type: application/json-patch+json
+Accept: application/json
+[
+  {
+    "op": "replace",
+    "path": "/email",
+    "value": "jane.doe@emailplace.com"
+  }
+]
+###
+DELETE {{rootURL}}/api/employees/2
+
+###
+###POLICIES#########################
+GET {{rootURL}}/api/policies
+Accept: application/json
+
+###
+GET {{rootURL}}/api/policies/1
+Accept: application/json
+
+###
+POST {{rootURL}}/api/policies
+Content-Type: application/json
+{
+  "policy_id": 2,
+    "account_number": "FIG-67601",
+    "customer_id": 1,
+    "manager_id": 1,
+    "policy_type": "Property",
+    "status": "Active",
+    "start_date": "2025-09-24T00:00:00",
+    "end_date": "2026-09-24T00:00:00",
+    "exposure_amount": 250000.00,
+    "loc_addr1": "1 Lake Dr.",
+    "loc_addr2": "",
+    "loc_city": "Woonsocket",
+    "loc_state": "RI",
+    "loc_zip": "02895",
+    "created_at": "2025-09-24T14:49:35"
+  }
+}
+
+###
+PUT {{rootURL}}/api/policies/2
+Content-Type: application/json
+{
+  "policy_id": 2,
+    "account_number": "FIG-67602",
+    "customer_id": 1,
+    "manager_id": 1,
+    "policy_type": "Property",
+    "status": "Active",
+    "start_date": "2025-09-24T00:00:00",
+    "end_date": "2026-09-24T00:00:00",
+    "exposure_amount": 250000.00,
+    "loc_addr1": "1 Pine Rd",
+    "loc_addr2": "Bldg. 4",
+    "loc_city": "Woonsocket",
+    "loc_state": "RI",
+    "loc_zip": "02895",
+    "created_at": "2025-09-24T14:49:35"
+  }
+}
+DELETE {{rootURL}}/api/policies/1
+###
+PATCH {{rootURL}}/api/policies/2
+Content-Type: application/json-patch+json
+Accept: application/json
+[
+  {
+    "op": "replace",
+    "path": "/loc_addr1",
+    "value": "1 Pine Rd"
+  },
+  {
+    "op": "replace",
+    "path": "/loc_addr2",
+    "value": "Bldg. 4"
+  }
+]
+
+###
+DELETE {{rootURL}}/api/policies/3
+
+###
+

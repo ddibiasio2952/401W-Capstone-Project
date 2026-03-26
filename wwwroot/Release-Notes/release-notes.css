@@ -1,0 +1,578 @@
+
+/* Basic styles */
+body {
+    font-family: sans-serif;
+}
+
+h1, h2, h3 {
+    margin: 1rem 0 2rem 0;
+}
+
+a {
+    color: #456ce4;
+}
+
+/* Main layout - two column grid */
+main {
+    background: #fff;
+    display: grid;
+    grid-template-columns: 25% 1fr;
+}
+
+/* Buttons */
+.button-release {
+    background: #1a2a5b;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.button-release:hover {
+    background: #6272bc;
+    opacity: 0.8;
+}
+
+.btn-primary {
+    background: #1a2a5b;
+    color: #fff;
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: #6272bc;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #c61e1e;
+    padding: 0.55rem 0.9rem;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #6b7280;
+    padding: 0.3rem 0.45rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #f3f4f6;
+}
+
+.action-btn .label {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+}
+
+.details-btn {
+    background: transparent;
+    border: 1px solid #d7e6f6;
+    color: #1a2a5b;
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.details-btn:hover {
+    background: #d7e6f6;
+}
+
+.details-btn:active {
+    background: #b8d4f0;
+    border-color: #a0c4e8;
+}
+
+.details-btn[aria-expanded="true"] {
+    background: #e6f0fb;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="date"],
+textarea,
+.version-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f9fafc;
+    color: #333;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease;
+}
+
+input[type="date"]:active,
+input[type="date"]:focus,
+input[type="date"]:focus-within {
+    background: #d4e0f0;
+    outline: none;
+    border-color: #a0b8d0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s ease, background-color 0.15s ease;
+    padding: 0.2rem;
+    border-radius: 4px;
+}
+
+input[type="date"]:active::-webkit-calendar-picker-indicator,
+input[type="date"]:focus::-webkit-calendar-picker-indicator,
+input[type="date"]:focus-within::-webkit-calendar-picker-indicator {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Quill editor styles */
+.ql-container {
+    font-size: 0.95rem;
+    font-family: sans-serif;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background: #fff;
+}
+
+.ql-editor {
+    min-height: 150px;
+}
+
+/* Fix heading sizes in Quill - they were wrong by default */
+#releaseNotesEditor .ql-editor h1,
+#releaseHotfixesEditor .ql-editor h1,
+.ql-container .ql-editor h1 {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    margin: 1.5rem 0 0.75rem 0 !important;
+    line-height: 1.2 !important;
+}
+
+#releaseNotesEditor .ql-editor h2,
+#releaseHotfixesEditor .ql-editor h2,
+.ql-container .ql-editor h2 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin: 1.25rem 0 0.6rem 0 !important;
+    line-height: 1.3 !important;
+}
+
+#releaseNotesEditor .ql-editor h3,
+#releaseHotfixesEditor .ql-editor h3,
+.ql-container .ql-editor h3 {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin: 1rem 0 0.5rem 0 !important;
+    line-height: 1.4 !important;
+}
+
+.ql-toolbar {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f9fafc;
+}
+
+.ql-editor.ql-blank::before {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.form-help {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Panels and cards */
+.panel {
+    background: #ffffff;
+    border: 1px solid #e6e9ee;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.card-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.card-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border: 1px solid #e6e9ee;
+    border-radius: 12px;
+    padding: 0.9rem;
+    margin-bottom: 0.75rem;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card-title-row {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-title-separator {
+    color: #6b7280;
+    margin: 0 0.25rem;
+}
+
+.card-title-summary {
+    color: #6b7280;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Left side - Version List */
+.versions {
+    background: #f7fbff;
+    border-right: 1px solid #e6eef8;
+    padding: 1.25rem;
+}
+
+.version-select-label {
+    font-size: 1rem;
+    color: gray;
+    margin: 0 0 0.5rem 0;
+}
+
+.version-select-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.recent-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recent-heading {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.admin-controls .small {
+    background: #1a2a5b;
+    padding: 0.4rem 0.6rem;
+}
+
+.admin-controls .small:hover {
+    background: #6272bc;
+}
+
+/* Right side - details panel */
+.details {
+    padding: 1.5rem 2rem;
+}
+
+.details .panel-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.details .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    align-items: flex-start;
+}
+
+.details .meta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.details .meta-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+}
+
+.details .meta-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.details .meta-date-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.details .meta-date {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.details .meta-date-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.details .notes {
+    background: #fafafa;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+/* Only add border to first h3 (section title) */
+.details .notes > h3:first-child {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #333;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.details .notes h3:not(:first-child) {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #333;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Heading sizes in displayed content */
+.details .notes h1,
+.details .hotfixes h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.75rem 0;
+    line-height: 1.2;
+}
+
+.details .notes h2,
+.details .hotfixes h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.6rem 0;
+    line-height: 1.3;
+}
+
+.details .notes h3:not(:first-child),
+.details .hotfixes h3:not(:first-child) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.details .notes ul {
+    list-style-position: outside;
+    padding-left: 1.25rem;
+    margin: 0.25rem 0;
+}
+
+.details .hotfixes {
+    background: #fff9f0;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ffe4b3;
+}
+
+.details .hotfixes > h3:first-child {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #8b5a00;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e0c89f;
+}
+
+.details .hotfixes h3:not(:first-child) {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #8b5a00;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.details .hotfixes ul {
+    list-style-position: outside;
+    padding-left: 1.25rem;
+    margin: 0.25rem 0;
+}
+
+/* Modals */
+.modal {
+    display: none;
+}
+
+.modal[aria-hidden="false"] {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3,6,23,0.5);
+}
+
+.modal-panel {
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 100vh;
+    overflow: auto;
+    margin: 2vh auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #e6edf5;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #eef3fb;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal .action-btn {
+    font-size: 1.5rem;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.modal-error {
+    color: #7f1d1d;
+    background: #fff4f4;
+    border: 1px solid #ffd2d2;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.modal-panel label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+.form-row-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-row-inline.three-columns {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Responsive stuff */
+@media (max-width: 920px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .versions {
+        max-height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        gap: 1rem;
+    }
+
+    .versions .recent-heading,
+    .versions .card-list {
+        display: none;
+    }
+
+    .version-select-wrapper {
+        flex: 1;
+    }
+    
+    #adminControls {
+        margin-bottom: 1rem;
+    }
+
+}

@@ -1,0 +1,46 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+
+# VS Code (optional)
+#.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Others
+*.cache
+*.log
+*.vsidx
+*.vspscc
+*.vssscc

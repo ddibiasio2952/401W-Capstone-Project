@@ -1,0 +1,339 @@
+<!-- DAN EDIT 11/27/2025 AM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Dashboard</title>
+    <link rel="stylesheet" href="customer-location.css" />
+</head>
+<body>
+
+    <!-- SITE NAVIGATION -->
+    <header id="topbar">
+        <div class="header-left">
+            <a href="https://localhost:7288/Dashboard/dashboard.html">
+                <img src="../image/white-fig-logo.webp" alt="Logo">
+            </a>
+        </div>
+        <div class="header-center">
+            <select id="nav-select" class="company-select">
+                <option selected>State</option>
+                <option>Location</option>
+            </select>
+            <input id="nav-search" type="search" placeholder="Enter Query" class="search-bar">
+            <button id="search-btn" onclick="enterSearch()">
+                <img src="../image/search.png" alt="search" width="20" />
+            </button>
+        </div>
+        <div class="header-right">
+            <span id="username-topbar">Username123</span>
+            <button id="profile-picture">
+                <img src="../image/user logo.png">
+            </button>
+
+            <div id="user-modal" class="modal-topbar">
+                <div class="modal-content-topbar">
+                    <a href="../Settings/setting.html">
+                        <span>Settings</span>
+                    </a>
+                    <button id="signout-btn" onclick="signOut()">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <aside>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../Dashboard/dashboard.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" /></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../Map/client-search.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z" /></svg>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Claims/claims.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-440h320v-80H320v80Zm0 120h320v-80H320v80Zm0 120h200v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
+                            <span>Claims</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/reports">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-520h278q-15-110-91.5-186.5T520-798v278Zm-80 358v-636q-121 15-200.5 105.5T160-480q0 122 79.5 212.5T440-162Zm80 0q110-14 187-91t91-187H520v278Zm-40-318Zm0 400q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z" /></svg>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Release-Notes/release-notes.html" id="release-notes">v0.0.0</a>
+                        <button onclick=toggleSidebar() id="toggle-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" /></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+
+
+        <!-- PAGE CONTENT -->
+        <main>
+
+            <!-- LOCATION / RESOURCES NAVIGATION -->
+            <div class="page-tabs">
+                <a href="../Location/customer-location.html" class="active">Location</a>
+                <a href="../Resources/customer-resource.html">Resources</a>
+            </div>
+            <section class="address-section">
+                <br />
+                <button class="share-btn">
+                    Share Location Info
+                    <img src="../image/upload-button.png" alt="Upload" width="20" />
+                </button>
+                <br />
+                <button class="add-policy-btn" id="open" onclick="openPolicyForm()">Add Policy ➕</button>
+            </section>
+
+            <div class="container">
+                <div class="left-panel">
+                    <h3 id="address_begin">Address</h3>
+                    <div class="map">
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="summary-cards">
+                        <div class="card white">
+                            <h4 id="cope_status">COPE Supplement</h4>
+                            <p>Date of last completion:</p><br />
+                            <strong><p id="supplement_date"> </p></strong>
+                            <div id="supplement_icon" class="status-icon"></div>
+                        </div>
+                        <div class="card white">
+                            <h4 id="site_status">On-Site Assessment</h4>
+                            <p>Date of last completion:</p><br />
+                            <strong><p id="completion_date"> </p></strong>
+                            <div id="completion_icon" class="status-icon"></div>
+                        </div>
+                        <div class="card white center">
+                            <h4>Active Policies</h4>
+                            <div class="policy-box">
+                                <div id="active_policies_circle" class="circle"></div>
+                            </div>
+                        </div>
+                        <div class="card blue center">
+                            <h4>Total Exposure</h4>
+                            <p id="exposure_box" class="exposure"></p>
+                        </div>
+                    </div>
+
+                    <!-- AN'S FILE UPLOAD SECTION -->
+                    <div class="files-section">
+                        <div class="files-uploaded">
+                            <h3>Files Uploaded</h3>
+                            <table id="file-table" class="file-table">
+                                <thead>
+                                    <tr>
+                                        <th>Policy ID</th>
+                                        <th>File Name</th>
+                                        <th>Type</th>
+                                        <th>Upload Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <form id="file-form"
+                              action="javascript:void(0);"
+                              method="POST"
+                              onsubmit="addFile()">
+                            <div class="upload-box">
+                                <h4>Upload a File</h4>
+                                <div class="upload-controls">
+                                    <select name="file_policy_id" id="file_policy_id" class="form-input" required>
+                                        <option value="" disabled selected></option>
+                                    </select>
+                                    <input type="text" name="file_name" id="file_name" class="form-input" disabled>
+                                    <div class="upload-area" id="dropZone">
+                                        <p><strong>Drag & Drop file</strong><br />Or Click to Browse</p>
+                                        <input type="file" id="fileInput" accept=".jpg, .jpeg, .gif, .pdf, .doc, .docx" hidden />
+                                    </div>
+                                    <input type="submit" class="submit-btn" id="submit-file-btn" value="Upload" disabled />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="requestModal" class="modal-overlay">
+                <div class="modal-content large">
+                    <div class="modal-header">
+                        <h2>Request Location Info</h2>
+                        <button id="closeModal"
+                                class="close-btn"
+                                type="button"
+                                aria-label="Close">
+                            ✖
+                        </button>
+                    </div>
+
+                    <div class="modal-tabs">
+                        <button class="tab-button active" data-tab="digitalTab">
+                            Digital COPE Supplement
+                        </button>
+                        <button class="tab-button" data-tab="onsiteTab">
+                            Onsite COPE Supplement
+                        </button>
+                    </div>
+
+                    <div id="digitalTab" class="tab-content active">
+                        <div class="info-row">
+                            <label>Account Name:</label><input type="text" placeholder="Account Name" />
+                        </div>
+                        <div class="info-row">
+                            <label>Address:</label><input type="text" />
+                        </div>
+                        <div class="info-row">
+                            <label>Underwriter</label>
+                            <select>
+                                <option>Select Underwriter</option>
+                            </select>
+                        </div>
+                        <div class="info-row">
+                            <label>Notes:</label><textarea placeholder="Enter additional comments..."></textarea>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="submit-btn" id="saveDigital">
+                                Save Digital Info
+                            </button>
+                            <button id="cancelRequest" class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div id="onsiteTab" class="tab-content">
+                        <div class="info-row">
+                            <label>Account Name:</label><input type="text" placeholder="Account Name" />
+                        </div>
+                        <div class="info-row">
+                            <label>Address:</label><input type="text" />
+                        </div>
+                        <div class="info-row">
+                            <label>Contact Information:</label>
+                            <div class="contact-row">
+                                <input type="text" placeholder="Phone" />
+                                <input type="email" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <label>Location Limit:</label><input type="text" />
+                        </div>
+                        <div class="info-row">
+                            <label>Underwriter</label>
+                            <select>
+                                <option>Select Underwriter</option>
+                            </select>
+                        </div>
+                        <div class="info-row">
+                            <label>Special Instructions:</label>
+                            <textarea placeholder="Enter notes or restrictions..."></textarea>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="submit-btn" id="saveOnsite">Save Onsite Info</button>
+                            <button id="cancelOnsite" class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+            <!-- Add Policy Modal Container -->
+            <section class="modal-container" id="modal">
+                <section class="modal">
+                    <button class="add-policy-close-btn" id="close" onclick="closePolicyForm()">x</button>
+                    <div class="modal-content">
+                        <p id="error-message"></p>
+                        <form id="policy-input-form"
+                              action="javascript:void(0);"
+                              method="POST"
+                              onsubmit="addPolicy()"
+                              class="modal-form">
+                            <h2>Add Policy</h2>
+                            <div>
+                                <label for="customer_id">Customer ID</label>
+                                <input type="text" name="customer_id" id="customer_id" placeholder="Enter Customer ID" class="form-input" disabled>
+                            </div>
+                            <div>
+                                <label for="account_number">Account Number</label>
+                                <input type="text" name="account_number" id="account_number" placeholder="Enter Account Number" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="location_id">Location</label>
+                                <select name="location_id" id="location_id" class="form-input" required>
+                                    <option value="" disabled selected>Select a Location</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="manager_id">Policy Manager</label>
+                                <select name="manager_id" id="manager_id" class="form-input" required>
+                                    <option value="" disabled selected>Select a Manager</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="policy_type">Policy Type</label>
+                                <select name="policy_type" id="policy_type" class="form-input" required>
+                                    <option value="" disabled selected>Select a Policy Type</option>
+                                    <option value="Auto">Auto</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Liability">Liability</option>
+                                    <option value="Marine">Marine</option>
+                                    <option value="Property">Property</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="policy_status">Status</label>
+                                <select name="policystatus" id="policy_status" class="form-input" required>
+                                    <option value="" disabled selected>Select a Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Expired">Expired</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="start_date">Start Date</label>
+                                <input type="date" name="start_date" id="start_date" placeholder="Enter Start Date" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="end_date">End Date</label>
+                                <input type="date" name="end_date" id="end_date" placeholder="Enter End Date" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="exposure_amount">Exposure Amount</label>
+                                <input type="number" min="999" max="9999999999999" name="exposure_amount" id="exposure_amount" placeholder="Enter Exposure" class="form-input" required>
+                            </div>
+                            <input id="submit_policy_btn" type="submit" value="Add Policy" class="submit-btn" />
+                        </form>
+                    </div>
+                </section>
+            </section>
+            
+
+            <script src="customer-location.js"></script>
+            <script src="../Navbar/topbar-search.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=***&libraries=marker" async defer></script>
+            <script src="/validate-session/validator.js"></script>
+</body>
+</html>

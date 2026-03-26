@@ -1,0 +1,356 @@
+<!-- DAN EDIT 11/27/2025 PM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" re="stylesheet" />
+</head>
+
+
+<body>
+
+    <header id="topbar">
+        <div class="header-left">
+            <a href="https://localhost:7288/Dashboard/dashboard.html">
+                <img src="../image/white-fig-logo.webp" alt="Logo">
+            </a>
+        </div>
+        <div class="header-center">
+            <select id="nav-select" class="company-select">
+                <option selected>State</option>
+                <option>Location</option>
+            </select>
+            <input id="nav-search" type="search" placeholder="Enter Query" class="search-bar">
+            <button id="search-btn" onclick="enterSearch()">
+                <img src="../image/search.png" alt="search" width="20" />
+            </button>
+        </div>
+        <div class="header-right">
+            <span id="username-topbar">Username123</span>
+            <button id="profile-picture">
+                <img src="../image/user logo.png">
+            </button>
+
+            <div id="user-modal" class="modal-topbar">
+                <div class="modal-content-topbar">
+                    <a href="../Settings/setting.html">
+                        <span>Settings</span>
+                    </a>
+                    <button id="signout-btn" onclick="signOut()">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <aside>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../Dashboard/dashboard.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" /></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../Map/client-search.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z" /></svg>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Claims/claims.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-440h320v-80H320v80Zm0 120h320v-80H320v80Zm0 120h200v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
+                            <span>Claims</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/reports">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-520h278q-15-110-91.5-186.5T520-798v278Zm-80 358v-636q-121 15-200.5 105.5T160-480q0 122 79.5 212.5T440-162Zm80 0q110-14 187-91t91-187H520v278Zm-40-318Zm0 400q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z" /></svg>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Release-Notes/release-notes.html" id="release-notes">v0.0.0</a>
+                        <button onclick=toggleSidebar() id="toggle-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" /></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <div id="main-content">
+                <section class="left-panel">
+                    <div class="page-header">
+                        <h2>Location Search</h2>
+                        <p id="loc-result"></p>
+                        <button class="add-btn" data-type="General" onclick="openCustomerForm()">Add New Customer ➕</button>
+                        <button class="add-btn" onclick="openLocationForm()">Add New Location ➕</button>
+                    </div>
+
+                    <div class="controls">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search Location">
+                        </div>
+
+                    </div>
+
+                    <div class="location-list" id="location-list">
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! CALL JAVASCRIPT TO FILL !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    </div>
+
+                    <!--<button class="load-more" id="loadMoreBtn">Load More +</button>-->
+
+                </section>
+
+                <!-- ADD CUSTOMER MODAL -->
+                <div id="addCustomerModal" class="modal-overlay">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="customer-title">Add Customer</h2>
+                            <button id="closeAddCustomer" class="close-btn" onclick="closeCustomerForm()">✖</button>
+                        </div>
+
+                        <form id="addCustomerForm" action="javascript:void(0);" method="POST" onsubmit="addCustomer()" class="input-modal-form">
+                            <div class="form-group">
+                                <input type="text" name="customer_id" id="customer_id" placeholder="Enter Customer ID" class="form-input" disabled hidden required>
+                                <div>
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Enter Name" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" placeholder="Enter Email" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="phone">Phone</label>
+                                    <input type="text" name="phone" id="phone" minlength="10" maxlength="10" placeholder="Enter Phone Number" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="addr_line1">Address Line 1</label>
+                                    <input type="text" name="addr_line1" id="addr_line1" placeholder="Enter Address Line 1" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="addr_line2">Address Line 2</label>
+                                    <input type="text" name="addr_line2" id="addr_line2" placeholder="Enter Address Line 2" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="city">City</label>
+                                    <input type="text" name="city" id="city" placeholder="Enter City" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="state_code">State</label>
+                                    <select name="state_code" id="state_code" class="form-input" required>
+                                        <option value="" disabled selected>Select a State or Territory</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="DC">District of Columbia</option>
+                                        <option value="AS">American Samoa</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="MP">Northern Mariana Islands</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="VI">U.S. Virgin Islands</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="zip_code">Zip Code</label>
+                                    <input type="text" minlength="5" maxlength="5" name="zip_code" id="zip_code" placeholder="Enter Zip Code" class="form-input" required>
+                                </div>
+                                <input id="submit_customer_btn" type="submit" value="Add Customer" class="submit-btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ADD LOCATION MODAL -->
+                <div id="addLocationModal" class="modal-overlay">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="location-title">Add Location</h2>
+                            <button id="closeAddLocation" class="close-btn" onclick="closeLocationForm()">✖</button>
+                        </div>
+
+                        <form id="addLocationForm" action="javascript:void(0);" method="POST" onsubmit="addLocation()" class="input-modal-form">
+                            <div class="form-group">
+                                <input type="text" name="location_id" id="location_id" placeholder="Enter Location ID" class="form-input" disabled hidden>
+                                <div>
+                                    <label for="loc_customer_id">Select a Customer</label>
+                                    <select name="loc_customer_id" id="loc_customer_id" class="form-input" required>
+                                        <option value="" disabled selected>Select a Customer</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="loc_addr_line1">Address Line 1</label>
+                                    <input type="text" name="loc_addr_line1" id="loc_addr_line1" placeholder="Enter Address Line 1" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="loc_addr_line2">Address Line 2</label>
+                                    <input type="text" name="loc_addr_line2" id="loc_addr_line2" placeholder="Enter Address Line 2" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="loc_city">City</label>
+                                    <input type="text" name="loc_city" id="loc_city" placeholder="Enter City" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="loc_state_code">State</label>
+                                    <select name="loc_state_code" id="loc_state_code" class="form-input" required>
+                                        <option value="" disabled selected>Select a State or Territory</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="DC">District of Columbia</option>
+                                        <option value="AS">American Samoa</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="MP">Northern Mariana Islands</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="VI">U.S. Virgin Islands</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="loc_zip_code">Zip Code</label>
+                                    <input type="text" minlength="5" maxlength="5" name="loc_zip_code" id="loc_zip_code" placeholder="Enter Zip Code" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="cope_eval">COPE Assessment Completion</label>
+                                    <input type="checkbox" name="cope_eval" id="cope_eval" placeholder="" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="cope_date">COPE Assessment Completion Date</label>
+                                    <input type="date" name="cope_date" id="cope_date" min="2024-01-01" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="site_eval">On-Site Assessment Completion</label>
+
+                                    <input type="checkbox" name="site_eval" id="site_eval" placeholder="" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="site_date">On-Site Assessment Completion Date</label>
+                                    <input type="date" name="site_date" id="site_date" min="2024-01-01" class="form-input">
+                                </div>
+                                <input id="submit_location_btn" type="submit" value="Add Location" class="submit-btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <section class="map-panel">
+                    <div class="map-placeholder">
+                        <div id="map"></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="client-search.js"></script>
+    <!--<script src="script.js"></script>-->
+    <script src="../Navbar/main.js"></script>
+    <script src="../Navbar/topbar-search.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=***&libraries=marker&callback=renderMap" async defer></script>
+    <script src="/validate-session/validator.js"></script>
+</body>
+</html>

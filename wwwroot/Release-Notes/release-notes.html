@@ -1,0 +1,231 @@
+<!-- DAN EDIT 11/27/2025 AM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Notes</title>
+    <!-- Navbar styles -->
+    <link rel="stylesheet" href="../Navbar/index.css">
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="release-notes.css">
+    <!-- Quill WYSIWYG Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Navbar JS (handles sidebar toggle and release version fetch) -->
+    <script src="../Navbar/main.js" defer></script>
+</head>
+<body>
+    <header id="topbar">
+        <div class="header-left">
+            <a href="https://localhost:7288/Dashboard/dashboard.html">
+                <img src="../image/white-fig-logo.webp" alt="Logo">
+            </a>
+        </div>
+        <div class="header-center">
+            <select id="nav-select" class="company-select">
+                <option selected>State</option>
+                <option>Location</option>
+            </select>
+            <input id="nav-search" type="search" placeholder="Enter Query" class="search-bar">
+            <button id="search-btn" onclick="enterSearch()">
+                <img src="../image/search.png" alt="search" width="20" />
+            </button>
+        </div>
+        <div class="header-right">
+            <span id="username-topbar">Username123</span>
+            <button id="profile-picture">
+                <img src="../image/user logo.png">
+            </button>
+
+            <div id="user-modal" class="modal-topbar">
+                <div class="modal-content-topbar">
+                    <a href="../Settings/setting.html">
+                        <span>Settings</span>
+                    </a>
+                    <button id="signout-btn" onclick="signOut()">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <aside>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../Dashboard/dashboard.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" /></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Map/client-search.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z" /></svg>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Claims/claims.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-440h320v-80H320v80Zm0 120h320v-80H320v80Zm0 120h200v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
+                            <span>Claims</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/reports">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-520h278q-15-110-91.5-186.5T520-798v278Zm-80 358v-636q-121 15-200.5 105.5T160-480q0 122 79.5 212.5T440-162Zm80 0q110-14 187-91t91-187H520v278Zm-40-318Zm0 400q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z" /></svg>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="release-notes.html" id="release-notes">v0.0.0</a>
+                        <button onclick=toggleSidebar() id="toggle-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" /></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <!-- LEFT COLUMN: versions/navigation -->
+            <section class="versions" aria-label="Release versions">
+                <p class="version-select-label">Select a version from the list:</p>
+                <div class="version-select-wrapper">
+                    <select id="versionSelect" class="version-select" aria-controls="details"></select>
+                </div>
+
+                <div class="recent-row">
+                    <h3 class="recent-heading">Recent versions</h3>
+                    <div id="adminControls" class="admin-controls" aria-hidden="true">
+                        <button id="addReleaseBtn" class="small button-release">Add Release</button>
+                    </div>
+                </div>
+
+                <ul id="versionList" class="card-list"></ul>
+            </section>
+
+            <!-- RIGHT COLUMN: details panel -->
+            <section class="details" id="details" tabindex="0" aria-live="polite">
+                <div class="panel">
+                    <h2 id="detailsTitle">Select a version</h2>
+                    <div class="meta">
+                        <div class="meta-group meta-version">
+                            <div class="meta-label">Version</div>
+                            <div class="meta-value" id="detailsVersion">—</div>
+                        </div>
+                        <div class="meta-group meta-dates">
+                            <div class="meta-label">Timeline</div>
+                            <div class="meta-date-grid">
+                                <div class="meta-date">
+                                    <span class="meta-date-label">Start</span>
+                                    <time id="detailsStartDate">—</time>
+                                </div>
+                                <div class="meta-date">
+                                    <span class="meta-date-label">Rollout</span>
+                                    <time id="detailsRolloutDate">—</time>
+                                </div>
+                                <div class="meta-date">
+                                    <span class="meta-date-label">Complete</span>
+                                    <time id="detailsCompleteDate">—</time>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-area">
+                        <article id="detailsFeatures" class="notes panel">
+                            <h3>Features</h3>
+                            <p>Choose a version on the left to view release details.</p>
+                        </article>
+                        <article id="detailsHotfixes" class="hotfixes panel"></article>
+                        <div class="panel save-row"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal: Add / Edit Release -->
+    <div id="releaseModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-panel" role="document">
+            <header class="modal-header">
+                <h2 id="modalTitle">Add Release</h2>
+                <button id="modalClose" class="action-btn button-release" aria-label="Close modal">✕</button>
+            </header>
+            <div id="modalError" class="modal-error" role="alert" aria-live="assertive"></div>
+            <form id="releaseForm">
+                <input type="hidden" id="formMode" value="add">
+                <input type="hidden" id="originalVersion" value="">
+
+                <div class="form-row-inline">
+                    <div class="form-row">
+                        <label for="releaseVersion">Version *</label>
+                        <input id="releaseVersion" type="text" required placeholder="e.g., v1.0.0">
+                    </div>
+                    <div class="form-row">
+                        <label for="releaseSummary">Summary/Title *</label>
+                        <input id="releaseSummary" type="text" required placeholder="Brief summary of this release">
+                    </div>
+                </div>
+
+                <div class="form-row-inline three-columns">
+                    <div class="form-row">
+                        <label for="releaseStartDate">Start Date *</label>
+                        <input id="releaseStartDate" type="date" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="releaseRolloutDate">Rollout Date</label>
+                        <input id="releaseRolloutDate" type="date">
+                    </div>
+                    <div class="form-row">
+                        <label for="releaseCompleteDate">Complete Date</label>
+                        <input id="releaseCompleteDate" type="date">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="releaseNotes">Features</label>
+                    <div id="releaseNotesEditor" style="min-height: 150px;"></div>
+                    <small class="form-help">New features and improvements in this release</small>
+                </div>
+
+                <div class="form-row">
+                    <label for="releaseHotfixes">Hotfixes</label>
+                    <div id="releaseHotfixesEditor" style="min-height: 150px;"></div>
+                    <small class="form-help">Bug fixes and patches applied in this release</small>
+                </div>
+
+                <div class="panel save-row" style="margin-top:0.5rem;">
+                    <button type="submit" class="btn-primary button-release">Save</button>
+                    <button type="button" class="btn-cancel button-release" id="modalCancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Delete Confirmation -->
+    <div id="deleteModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="deleteModalTitle">
+        <div class="modal-backdrop" id="deleteBackdrop"></div>
+        <div class="modal-panel" role="document">
+            <header class="modal-header">
+                <h2 id="deleteModalTitle">Confirm delete</h2>
+                <button id="deleteModalClose" class="action-btn button-release" aria-label="Close">✕</button>
+            </header>
+            <div class="panel">
+                <p>Are you sure you want to delete release <strong id="deleteVersionLabel"></strong>?</p>
+                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                    <button id="confirmDeleteBtn" class="btn-cancel button-release">Delete</button>
+                    <button id="cancelDeleteBtn" class="btn-primary button-release">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="release-notes.js" defer></script>
+    <script src="../Navbar/topbar-search.js"></script>
+    <script src="/validate-session/validator.js"></script>
+</body>
+</html>

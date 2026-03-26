@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&G - Location Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #map {
+            height: 100%;
+            width: 100%; 
+            min-height: 500px;
+        }
+        .map-placeholder {
+            height: 100%;
+            width: 100%;
+            min-height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="falvey logo.png"
+            alt="Falvey Insurance Group Logo" 
+            width="100" />
+            <div class="search-container">
+                <select class="company-select" id="companySelect">
+                    <option>All Company</option>
+                    <option>Company A</option>
+                    <option>Company B</option>
+                </select>
+                <input type="text" class="global-search" placeholder="Enter keyword 3 characters minimum">
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="username">Username007</span>
+            <button class="logout-btn">Log out</button>
+            <img src="user_avatar.jpg" alt="User" class="avatar" width="40" />
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <div class="sidebar-icon">🏠 Home </div>
+        <div class="sidebar-icon">👤 Clients</div>
+        <div class="sidebar-icon">📄 Claims </div>
+        <div class="sidebar-icon">➕ Reports </div>
+    </div>
+
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="#" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="#" class="breadcrumb-link">Reports</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Location</span>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h2 class="page-title">Locations in Illinois</h2>
+                <button class="btn-primary" id="addLocationBtn">
+                    <i class="fas fa-plus"></i>
+                    Add New Location
+                </button>
+            </div>
+
+            <div class="search-filter-bar">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search Location">
+                </div>
+                
+                <div class="filter-controls">
+                    <button class="btn-filter" id="filterBtn">
+                        <i class="fas fa-filter"></i>
+                        Filter By
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <button class="btn-filter" id="sortBtn">
+                        <i class="fas fa-list"></i>
+                        Sort By
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <button class="btn-view-toggle" id="viewToggle">
+                        <i class="fas fa-th"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="locations-container" id="locationsContainer">
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn-load-more" id="loadMoreBtn">Load More +</button>
+            </div>
+        </div>
+
+        <section class="map-panel">
+            <div id="map"></div>
+        </section>
+    </div>
+
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Location Details</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="modalCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="addLocationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Location</h3>
+                <button class="modal-close" id="addModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addLocationForm">
+                    <div class="form-group">
+                        <label for="locationName">Location Name</label>
+                        <input type="text" id="locationName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP Code</label>
+                            <input type="text" id="zip" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" class="form-control" value="United States" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sitesRatings">Active Policies</label>
+                        <input type="number" id="activePolicies" class="form-control" value="1" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="addModalCancelBtn">Cancel</button>
+                <button class="btn-primary" id="addModalSaveBtn">Save Location</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="filters.js"></script>
+    <script src="map.js"></script>
+
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYVdWjc4-0m102zHkgWLe_SPfGHdso7rI&callback=initMap&v=weekly"
+        defer
+    ></script>
+</body>
+</html>

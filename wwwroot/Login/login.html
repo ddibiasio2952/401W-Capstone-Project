@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/Login/login.css" />
+  </head>
+  <body>
+    <header id="topbar" class="topbar">
+      <div class="topbar-left">
+        <img src="/image/white-fig-logo.webp" alt="Logo" width="110" />
+        <div class="brand-name">Falvey Insurance Group</div>
+      </div>
+      <div class="topbar-center"></div>
+    </header>
+
+    <div class="auth-bg"></div>
+    <!-- MAIN AUTH -->
+    <div class="container glass">
+      <!-- SIGN IN -->
+      <div class="auth-box" id="signin-box">
+        <h2 class="title">Sign In</h2>
+        <p class="subtitle">Welcome back — Sign in to continue</p>
+        <form>
+          <label>Email</label>
+          <input type="email" name="email" class="input" placeholder="you@example.com" required/>
+          <label>Password</label>
+          <input type="password" name="password" class="input" placeholder="••••••••" required/>
+          <button type="submit" class="btn-primary">Sign In</button>
+        </form>
+        <div class="small">
+          <a>Forgot password?</a>
+        </div>
+        <p class="switch-text">
+          Don't have an account?
+          <a class="switch-btn" id="go-signup">Sign Up</a>
+        </p>
+      </div>
+
+      <!-- SIGN UP -->
+      <div class="auth-box hidden" id="signup-box">
+        <h2 class="title">Create Account</h2>
+        <form>
+          <label>Employee ID</label>
+          <input type="text" name="emp_id" class="input" placeholder="Your Name" required/>
+          <label>Email</label>
+          <input type="email" name="email" class="input" placeholder="you@example.com" required/>
+          <label>Password</label>
+          <input type="password" name="password" class="input" placeholder="••••••••" minlength="8" required/>
+          <label>Confirm Password</label>
+          <input type="password" name="confirm" class="input" placeholder="••••••••" minlength="8" required/>
+          <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        <p class="switch-text">
+          Already have an account?
+          <a class="switch-btn" id="go-signin">Sign In</a>
+        </p>
+      </div>
+    </div>
+    <script src="/Login/login.js"></script>
+  </body>
+</html>

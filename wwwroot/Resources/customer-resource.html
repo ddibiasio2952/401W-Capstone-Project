@@ -1,0 +1,457 @@
+<!-- DAN EDIT 11/29/2025 PM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources</title>
+    <link rel="stylesheet" href="customer-resource.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- SITE NAVIGATION -->
+    <header id="topbar">
+        <div class="header-left">
+            <a href="#home">
+                <img src="../image/white-fig-logo.webp" alt="Logo">
+            </a>
+        </div>
+        <div class="header-center">
+            <select id="nav-select" class="company-select">
+                <option selected>State</option>
+                <option>Location</option>
+            </select>
+            <input id="nav-search" type="search" placeholder="Enter Query" class="search-bar">
+            <button id="search-btn" onclick="enterSearch()">
+                <img src="../image/search.png" alt="search" width="20" />
+            </button>
+        </div>
+        <div class="header-right">
+            <span id="username-topbar">Username123</span>
+            <button id="profile-picture">
+                <img src="../image/user logo.png">
+            </button>
+
+            <div id="user-modal" class="modal-topbar">
+                <div class="modal-content-topbar">
+                    <a href="../Settings/setting.html">
+                        <span>Settings</span>
+                    </a>
+                    <button id="signout-btn" onclick="signOut()">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <aside>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../Dashboard/dashboard.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" /></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../Map/client-search.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z" /></svg>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Claims/claims.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-440h320v-80H320v80Zm0 120h320v-80H320v80Zm0 120h200v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" /></svg>
+                            <span>Claims</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/reports">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-520h278q-15-110-91.5-186.5T520-798v278Zm-80 358v-636q-121 15-200.5 105.5T160-480q0 122 79.5 212.5T440-162Zm80 0q110-14 187-91t91-187H520v278Zm-40-318Zm0 400q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z" /></svg>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Release-Notes/release-notes.html" id="release-notes">v0.0.0</a>
+                        <button onclick=toggleSidebar() id="toggle-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" /></svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+
+
+        <!-- PAGE CONTENT -->
+        <main>
+
+            <!-- LOCATION / RESOURCES NAVIGATION -->
+            <div class="page-tabs">
+                <a href="../Location/customer-location.html">Location</a>
+                <a href="../Resources/customer-resource.html" class="active">Resources</a>
+            </div>
+
+            <section class="address-section">
+                <h3>Location Info</h3>
+                <p id="address">City, State, Zip Code</p>
+                <button class="share-btn">
+                    Share Location Info
+                    <img src="../image/upload-button.png" alt="Upload" width="20" />
+                </button>
+
+                <h3>Policies</h3>
+                <button class="add-policy-btn" id="open-policy" onclick="openPolicyForm()">Add New Policy</button>
+                <table id="policy-table" class="policy-table">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Policy ID</th>
+                            <th>Account Number</th>
+                            <th>Status</th>
+                            <th>Policy Type</th>
+                            <th>Underwriter</th>
+                            <th>Exposure Amount</th>
+                            <th>Claims</th>
+                            <th>Modify</th>
+                        </tr>
+                    </thead>
+                    <!-- AN's EDIT CLAIMS DATA  -->
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <!-- AN's EDIT CLAIMS MODAL  -->
+            <div id="claimsModal" class="modal-overlay">
+                <div class="modal-content large-claims">
+                    <div class="modal-header">
+                        <h2>Claims Details</h2>
+                        <button id="closeClaimsModal" class="close-btn">✖</button>
+                    </div>
+                    <div class="claims-summary-row">
+                        <div class="claims-summary-box">
+                            <div class="claims-summary-title">Policy ID</div>
+                            <div id="claimsPolicyId" class="claims-summary-number">—</div>
+                        </div>
+                        <div class="claims-summary-box">
+                            <div class="claims-summary-title">Total Claims</div>
+                            <div id="claimsTotal" class="claims-summary-number">0</div>
+                        </div>
+                        <div class="claims-summary-box">
+                            <div class="claims-summary-title">Open Claims</div>
+                            <div id="claimsOpen" class="claims-summary-number">0</div>
+                        </div>
+                        <button class="add-claim-btn" id="open-claim" onclick="openClaimForm()">Add New Claim</button>
+                    </div>
+                    <div class="claims-table-wrap">
+                        <table class="claims-table">
+                            <thead>
+                                <tr>
+                                    <th>Claim Number</th>
+                                    <th>Status</th>
+                                    <th>Date of Loss</th>
+                                    <th>Date Reported</th>
+                                    <th>Reserve Amount</th>
+                                    <th>Paid Amount</th>
+                                    <th>Status Memo</th>
+                                    <th>Assigned To</th>
+                                    <th>Modify</th>
+                                </tr>
+                            </thead>
+                            <tbody id="claimsTableBody">
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation Pane -->
+            <div class="recommendation">
+                <div class="sub-tabs">
+                    <button class="sub active" data-tab="recommendation-grid">
+                        Recommendation
+                    </button>
+                    <button class="sub" data-tab="memos">Memos</button>
+                </div>
+
+                <div id="recommendation-grid" class="sub-content active">
+                    <h4>Recommendations</h4>
+                    <button class="add-rec-btn" id="open-rec" onclick="openRecForm()">
+                        Add New Recommendation ➕
+                    </button>
+                    <div id="rec-grid" class="grid">
+                        <box></box>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- RECOMMENDATION MODAL -->
+            <div id="addRecModal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="rec-title">Add Recommendation</h2>
+                        <button id="closeAddRec" class="close-btn" onclick="closeRecForm()">✖</button>
+                    </div>
+
+                    <form id="addRecForm" action="javascript:void(0);" method="POST" onsubmit="addRecommendation()" class="input-modal-form">
+                        <div class="form-group">
+                            <input type="text" name="recommendation_id" id="recommendation_id" placeholder="Enter Recommendation ID" class="form-input" disabled hidden required>
+                            <div>
+                                <label>Policy ID</label>
+                                <select name="rec_policy_id" id="rec_policy_id" class="form-input" required>
+                                    <option value="" disabled selected>Select a Policy ID</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Recommendation Description</label>
+                                <div class="text-toolbar">
+                                    <button type="button" data-command="bold">
+                                        <i class="fa fa-bold"></i>
+                                    </button>
+                                    <button type="button" data-command="italic">
+                                        <i class="fa fa-italic"></i>
+                                    </button>
+                                    <button type="button" data-command="underline">
+                                        <i class="fa fa-underline"></i>
+                                    </button>
+                                    <button type="button" data-command="insertOrderedList">
+                                        <i class="fa fa-list-ol"></i>
+                                    </button>
+                                    <button type="button" data-command="insertUnorderedList">
+                                        <i class="fa fa-list-ul"></i>
+                                    </button>
+                                    <button type="button" data-command="justifyLeft">
+                                        <i class="fa fa-align-left"></i>
+                                    </button>
+                                    <button type="button" data-command="justifyCenter">
+                                        <i class="fa fa-align-center"></i>
+                                    </button>
+                                    <button type="button" data-command="justifyRight">
+                                        <i class="fa fa-align-right"></i>
+                                    </button>
+                                </div>
+                                <div id="rec-editor" contenteditable="true" class="editor"></div>
+                            </div>
+                            <input id="submit_rec_btn" type="submit" value="Add Recommendation" class="submit-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MEMO CONTENT -->
+            <div id="memos" class="sub-content">
+                <div class="memo-section">
+                    <div class="memo-header">
+                        <h4>General Memos</h4>
+                        <button class="add-memo-btn" data-type="General" onclick="openMemoForm()">
+                            Add New Memo ➕
+                        </button>
+                    </div>
+                    <div id="generalMemoList"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- MEMO MODAL -->
+        <div id="addMemoModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="memo-title">Add Memo</h2>
+                    <button id="closeAddMemo" class="close-btn" onclick="closeMemoForm()">✖</button>
+                </div>
+
+                <form id="addMemoForm" action="javascript:void(0);" method="POST" onsubmit="addMemo()" class="input-modal-form">
+                    <div class="form-group">
+                        <input type="text" name="memo_id" id="memo_id" placeholder="Enter memo ID" class="form-input" disabled hidden required>
+                        <div>
+                            <label>Policy ID</label>
+                            <select name="memo_policy_id" id="memo_policy_id" class="form-input" required>
+                                <option value="" disabled selected>Select a Policy ID</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Memo Description</label>
+                            <div class="text-toolbar">
+                                <button type="button" data-command="bold">
+                                    <i class="fa fa-bold"></i>
+                                </button>
+                                <button type="button" data-command="italic">
+                                    <i class="fa fa-italic"></i>
+                                </button>
+                                <button type="button" data-command="underline">
+                                    <i class="fa fa-underline"></i>
+                                </button>
+                                <button type="button" data-command="insertOrderedList">
+                                    <i class="fa fa-list-ol"></i>
+                                </button>
+                                <button type="button" data-command="insertUnorderedList">
+                                    <i class="fa fa-list-ul"></i>
+                                </button>
+                                <button type="button" data-command="justifyLeft">
+                                    <i class="fa fa-align-left"></i>
+                                </button>
+                                <button type="button" data-command="justifyCenter">
+                                    <i class="fa fa-align-center"></i>
+                                </button>
+                                <button type="button" data-command="justifyRight">
+                                    <i class="fa fa-align-right"></i>
+                                </button>
+                            </div>
+                            <div id="memo-editor" contenteditable="true" class="editor"></div>
+                        </div>
+                        <input id="submit_memo_btn" type="submit" value="Add Memo" class="submit-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ADD CLAIM MODAL -->
+        <section class="input-modal-container" id="claim-modal">
+            <section class="policy-modal">
+                <button class="claim-close-btn" id="close" onclick="closeClaimForm()">✖</button>
+                <div class="claim-modal-content">
+                    <p id="error-message"></p>
+                    <form id="claim-input-form" action="javascript:void(0);" method="POST" onsubmit="addClaim()" class="policy-modal-form">
+                        <h2 id="claim-title">Add Claim</h2>
+
+                        <input type="text" name="claim_id" id="claim_id" placeholder="Enter Claim ID" class="form-input" disabled hidden required>
+                        <input type="text" name="claim_created_at" id="claim_created_at" placeholder="Creation Date" class="form-input" disabled hidden required>
+                        <div id="claim_policy_id_field">
+                            <label for="claim_policy_id">Policy ID</label>
+                            <input type="text" name="claim_policy_id" id="claim_policy_id" placeholder="Enter Policy ID" class="form-input" disabled>
+                        </div>
+                        <div>
+                            <label for="claim_number">Claim Number</label>
+                            <input type="text" name="claim_number" id="claim_number" placeholder="Enter Claim Number" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="assigned_to">Assigned To</label>
+                            <select name="assigned_to" id="assigned_to" class="form-input" required>
+                                <option value="" disabled selected>Select a Manager</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="claim_status">Status</label>
+                            <select name="claim_status" id="claim_status" class="form-input" required>
+                                <option value="" disabled selected>Select a Status</option>
+                                <option value="Open">Open</option>
+                                <option value="Investigating">Investigating</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Denied">Denied</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="date_of_loss">Date of Loss</label>
+                            <input type="date" name="date_of_loss" id="date_of_loss" placeholder="Enter Date of Loss" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="date_reported">Date Reported</label>
+                            <input type="date" name="date_reported" id="date_reported" placeholder="Enter Date Reported" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="reserve_amount">Reserve Amount</label>
+                            <input type="number" min="999" max="9999999999999" name="reserve_amount" id="reserve_amount" placeholder="Enter Reserve" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="paid_amount">Paid Amount</label>
+                            <input type="number" value="0" min="0" max="9999999999999" name="paid_amount" id="paid_amount" placeholder="Enter Payout" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="memo">Memo</label>
+                            <input type="text" name="memo" id="memo" maxlength="300" placeholder="Enter Memo" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="created_by">Created By</label>
+                            <input type="text" name="created_by" id="created_by" placeholder="Enter Creator" class="form-input" required disabled>
+                        </div>
+                        <input id="submit_claim_btn" type="submit" value="Add Claim" class="submit-btn">
+                    </form>
+                </div>
+            </section>
+        </section>
+
+        <!-- ADD POLICY MODAL -->
+        <section class="policy-modal-container" id="policy-modal">
+            <section class="policy-modal">
+                <button class="policy-close-btn" id="close" onclick="closePolicyForm()">✖</button>
+                <div class="policy-modal-content">
+                    <p id="error-message"></p>
+                    <form id="policy-input-form" action="javascript:void(0);" method="POST" onsubmit="addPolicy()" class="policy-modal-form">
+                        <h2 id="policy-title">Add Policy</h2>
+                        <input type="text" name="pol_policy_id" id="pol_policy_id" placeholder="Enter Policy ID" class="form-input" disabled hidden required>
+                        <input type="text" name="created_at" id="created_at" placeholder="Creation Date" class="form-input" disabled hidden required>
+                        <div id="customer_id_field">
+                            <label for="customer_id">Customer ID</label>
+                            <input type="text" name="customer_id" id="customer_id" placeholder="Enter Customer ID" class="form-input" disabled>
+                        </div>
+                        <div>
+                            <label for="account_number">Account Number</label>
+                            <input type="text" name="account_number" id="account_number" placeholder="Enter Account Number" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="location_id">Location</label>
+                            <select name="location_id" id="location_id" class="form-input" required>
+                                <option value="" disabled selected>Select a Location</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="manager_id">Policy Manager</label>
+                            <select name="manager_id" id="manager_id" class="form-input" required>
+                                <option value="" disabled selected>Select a Manager</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="policy_type">Policy Type</label>
+                            <select name="policy_type" id="policy_type" class="form-input" required>
+                                <option value="" disabled selected>Select a Policy Type</option>
+                                <option value="Auto">Auto</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Liability">Liability</option>
+                                <option value="Marine">Marine</option>
+                                <option value="Property">Property</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="policy_status">Status</label>
+                            <select name="policy_status" id="policy_status" class="form-input" required>
+                                <option value="" disabled selected>Select a Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Cancelled">Cancelled</option>
+                                <option value="Expired">Expired</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="start_date">Start Date</label>
+                            <input type="date" name="start_date" id="start_date" placeholder="Enter Start Date" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="end_date">End Date</label>
+                            <input type="date" name="end_date" id="end_date" placeholder="Enter End Date" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="exposure_amount">Exposure Amount</label>
+                            <input type="number" min="999" max="9999999999999" name="exposure_amount" id="exposure_amount" placeholder="Enter Exposure" class="form-input" required>
+                        </div>
+                        <input id="submit_policy_btn" type="submit" value="Add Policy" class="submit-btn" />
+                    </form>
+                </div>
+            </section>
+        </section>
+
+        <script src="customer-resource.js"></script>
+        <script src="../Navbar/topbar-search.js"></script>
+        <script src="/validate-session/validator.js"></script>
+</body>
+</html>
